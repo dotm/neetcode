@@ -42,5 +42,3 @@ class Solution:
               leftPointer += 1
 
     return resultStr
-
-print(Solution().minWindow("ADOBECODEBANC", "ABC"))
