@@ -1,3 +1,6 @@
+/*
+Permutation but limiting the number of sample taken (not all nums are returned)
+*/
 function permute(nums: number[], sampleCount: number | undefined = undefined): number[][] {
   const permutationList: number[][] = []
   if(sampleCount === undefined){

@@ -1,3 +1,6 @@
+/*
+Encode and Decode Strings
+*/
 function encodeStrings(strArr: string[]): string {
   //with header for word count
   let wordsLength: number[] = []
