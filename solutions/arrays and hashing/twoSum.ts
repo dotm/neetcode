@@ -8,8 +8,6 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
- 
-
 Example 1:
 
 Input: nums = [2,7,11,15], target = 9
@@ -26,21 +24,21 @@ Output: [0,1]
  
 
 Constraints:
-2 <= nums.length <= 104
--109 <= nums[i] <= 109
--109 <= target <= 109
+2 <= nums.length <= 10^4
+-10^9 <= nums[i] <= 10^9
+-10^9 <= target <= 10^9
 Only one valid answer exists.
 
-Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+Follow-up: Can you come up with an algorithm that is less than O(n^2) time complexity?
 */
 function twoSum(nums: number[], target: number): number[] {
   const numMap = new Map<number,number>()
   for(let i=0; i<nums.length; i++){
-      const val = numMap.get(target-nums[i])
-      if(val !== undefined){
-          return [val, i]
-      }
-      numMap.set(nums[i], i)
+    const val = numMap.get(target-nums[i])
+    if(val !== undefined){
+      return [val, i]
+    }
+    numMap.set(nums[i], i)
   }
   return []
 };

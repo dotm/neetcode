@@ -1,12 +1,8 @@
 """
 739. Daily Temperatures
 Medium
-12K
-262
-Companies
-Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
 
- 
+Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
 
 Example 1:
 
@@ -24,7 +20,7 @@ Output: [1,1,0]
 
 Constraints:
 
-1 <= temperatures.length <= 105
+1 <= temperatures.length <= 10^5
 30 <= temperatures[i] <= 100
 """
 from typing import List

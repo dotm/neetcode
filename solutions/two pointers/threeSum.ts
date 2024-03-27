@@ -1,9 +1,7 @@
 /*
 15. 3Sum
 Medium
-29.2K
-2.7K
-Companies
+
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.
@@ -43,12 +41,14 @@ function threeSum(nums: number[]): number[][] {
   for(let firstIndex=0; firstIndex<sortedNums.length; firstIndex++){
     let firstNum = sortedNums[firstIndex]
     if(firstIndex>0 && sortedNums[firstIndex]===sortedNums[firstIndex-1]){
+      //skip if we have processed the same number as first index (to avoid duplicate triplets)
       continue
     }
 
     let secondIndex = firstIndex+1
     let thirdIndex = sortedNums.length-1
     while(secondIndex < thirdIndex){
+      //basically the same algorithm as sorted two sum (except there's a firstNum)
       let secondNum = sortedNums[secondIndex]
       let thirdNum = sortedNums[thirdIndex]
       if(firstNum+secondNum+thirdNum < 0){
@@ -62,6 +62,7 @@ function threeSum(nums: number[]): number[][] {
       result.push([firstNum, secondNum, thirdNum])
       secondIndex++
       while(sortedNums[secondIndex]===sortedNums[secondIndex-1]){
+        //skip if we have processed the same number as second index (to avoid duplicate triplets)
         secondIndex++
         continue
       }

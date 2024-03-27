@@ -1,4 +1,4 @@
-"""
+/*
 153. Find Minimum in Rotated Sorted Array
 Medium
 
@@ -38,29 +38,27 @@ n == nums.length
 -5000 <= nums[i] <= 5000
 All the integers of nums are unique.
 nums is sorted and rotated between 1 and n times.
-"""
-from typing import List
-import math as math
+*/
+function findMin(nums: number[]): number {
+  let leftPointer: number = 0;
+  let rightPointer: number = nums.length - 1;
+  let result: number = Number.POSITIVE_INFINITY;
 
-class Solution:
-  def findMin(self, nums: List[int]) -> int:
-    leftPointer = 0
-    rightPointer = len(nums) - 1
-    result = math.inf
+  if (nums[leftPointer] < nums[rightPointer]) {
+    return nums[leftPointer];
+  }
 
-    if nums[leftPointer] < nums[rightPointer]:
-      return nums[leftPointer]
+  while (leftPointer <= rightPointer) {
+    const midPointer: number = Math.floor((rightPointer + leftPointer) / 2);
+    result = Math.min(result, nums[midPointer]);
     
-    while leftPointer <= rightPointer:
-      midPointer = (rightPointer + leftPointer) // 2
-      result = min(result, nums[midPointer])
-      
-      midIsPartOfBiggerValues = nums[midPointer] >= nums[leftPointer] and nums[leftPointer] > nums[rightPointer]
-      if midIsPartOfBiggerValues:
-        leftPointer = midPointer + 1
-      else:
-        rightPointer = midPointer - 1
-    
-    return result
-
-print(Solution().findMin([2,1]))
+    const midIsPartOfBiggerValues: boolean = nums[midPointer] >= nums[leftPointer] && nums[leftPointer] > nums[rightPointer];
+    if (midIsPartOfBiggerValues) {
+      leftPointer = midPointer + 1;
+    } else {
+      rightPointer = midPointer - 1;
+    }
+  }
+  
+  return result;
+}

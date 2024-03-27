@@ -23,24 +23,27 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
 */
 function isAnagram(s: string, t: string): boolean {
   if(s.length !== t.length){
-      return false
+    return false
   }
 
-  const countMap = new Map<string,number>()
+  const countMap = new Map<string,number>() //{char: total count of char}
+  //increment count for char found in s
   for(let i = 0; i < s.length; i++){
-      countMap.set(s[i], (countMap.get(s[i]) ?? 0) + 1)
+    countMap.set(s[i], (countMap.get(s[i]) ?? 0) + 1)
   }
+  //decrement count for char found in t
   for(let i=0; i<t.length; i++){
-      let count = countMap.get(t[i])
-      if(count === undefined){
-          return false
-      }
-      countMap.set(t[i],count-1)
+    let count = countMap.get(t[i])
+    if(count === undefined){
+      return false
+    }
+    countMap.set(t[i],count-1)
   }
+  //check all char count is 0
   for(let [key, value] of countMap){
-      if(value !== 0){
-          return false
-      }
+    if(value !== 0){
+      return false
+    }
   }
   return true
 };

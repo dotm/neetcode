@@ -67,7 +67,7 @@ class Solution:
           else:
             if nums[leftPointer] <= target: # [6,0,1,2,3,4,5] mid:2 target:6
               rightPointer = midPointer - 1
-            elif nums[rightPointer] >= midValue: # [6,0,1,2,3,4,5] mid:2 target:4
+            elif nums[rightPointer] >= target: # [6,0,1,2,3,4,5] mid:2 target:4
               leftPointer = midPointer + 1
             else:
               return -1
@@ -75,9 +75,9 @@ class Solution:
           if midIsPartOfSmallerValues:
             rightPointer = midPointer - 1
           else:
-            if nums[leftPointer] <= midValue: # [4,5,6,7,8,1,2] mid:7 target:5
+            if nums[leftPointer] <= target: # [4,5,6,7,8,1,2] mid:7 target:5
               rightPointer = midPointer - 1
-            elif nums[rightPointer] >= midValue: # [4,5,6,7,8,1,2] mid:7 target:2
+            elif nums[rightPointer] >= target: # [4,5,6,7,8,1,2] mid:7 target:2
               leftPointer = midPointer + 1
             else:
               return -1

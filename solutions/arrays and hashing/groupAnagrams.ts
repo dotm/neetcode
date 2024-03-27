@@ -1,14 +1,10 @@
 /*
 49. Group Anagrams
 Medium
-17.7K
-530
-Companies
+
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
-
- 
 
 Example 1:
 
@@ -63,7 +59,6 @@ function groupAnagrams(strs: string[]): string[][] {
 
       let val = stringsMap.get(key) ?? []
       val.push(str)
-      console.log(key)
       stringsMap.set(key, val)
   }
   return Array.from(stringsMap.values())

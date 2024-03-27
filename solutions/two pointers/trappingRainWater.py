@@ -1,12 +1,8 @@
 """
 42. Trapping Rain Water
 Hard
-29.9K
-435
-Companies
-Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
 
- 
+Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
 
 Example 1:
 
@@ -23,8 +19,8 @@ Output: 9
 Constraints:
 
 n == height.length
-1 <= n <= 2 * 104
-0 <= height[i] <= 105
+1 <= n <= 2 * 10^4
+0 <= height[i] <= 10^5
 """
 from typing import List
 

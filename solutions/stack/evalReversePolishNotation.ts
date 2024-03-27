@@ -1,9 +1,7 @@
 /*
 150. Evaluate Reverse Polish Notation
 Medium
-6.8K
-986
-Companies
+
 You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
 
 Evaluate the expression. Return an integer that represents the value of the expression.
@@ -16,7 +14,6 @@ The division between two integers always truncates toward zero.
 There will not be any division by zero.
 The input represents a valid arithmetic expression in a reverse polish notation.
 The answer and all the intermediate calculations can be represented in a 32-bit integer.
- 
 
 Example 1:
 
@@ -50,22 +47,23 @@ function evalRPN(tokens: string[]): number {
   const stack: number[] = []
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
+    //we use ! to force mark not undefined because the input is guaranteed to be valid
     if(token === "+"){
       const rightVal = stack.pop()
       const leftVal = stack.pop()
-      stack.push(leftVal+rightVal)
+      stack.push(leftVal!+rightVal!)
     }else if(token === "-"){
       const rightVal = stack.pop()
       const leftVal = stack.pop()
-      stack.push(leftVal-rightVal)
+      stack.push(leftVal!-rightVal!)
     }else if(token === "*"){
       const rightVal = stack.pop()
       const leftVal = stack.pop()
-      stack.push(leftVal*rightVal)
+      stack.push(leftVal!*rightVal!)
     }else if(token === "/"){
       const rightVal = stack.pop()
       const leftVal = stack.pop()
-      const val = leftVal/rightVal
+      const val = leftVal!/rightVal!
       const roundedVal = val > 0 ? Math.floor(val) : Math.ceil(val)
       stack.push(roundedVal)
     }else{

@@ -1,4 +1,4 @@
-"""
+/*
 11. Container With Most Water
 Medium
 
@@ -27,27 +27,27 @@ Constraints:
 n == height.length
 2 <= n <= 10^5
 0 <= height[i] <= 10^4
-"""
+*/
 
-from typing import List
+function maxArea(height: number[]): number {
+  let leftPointerIndex: number = 0;
+  let rightPointerIndex: number = height.length - 1;
+  let area: number = 0;
 
-class Solution:
-  def maxArea(self, height: List[int]) -> int:
-    leftPointerIndex = 0
-    rightPointerIndex = len(height) - 1
-    area = 0
+  while (leftPointerIndex < rightPointerIndex) {
+    const leftHeight: number = height[leftPointerIndex];
+    const rightHeight: number = height[rightPointerIndex];
+    area = Math.max(
+      area,
+      (rightPointerIndex - leftPointerIndex) * Math.min(leftHeight, rightHeight)
+    );
 
-    while leftPointerIndex < rightPointerIndex:
-      leftHeight = height[leftPointerIndex]
-      rightHeight = height[rightPointerIndex]
-      area = max(
-        area,
-        (rightPointerIndex-leftPointerIndex) * min(leftHeight, rightHeight)
-      )
+    if (leftHeight < rightHeight) {
+      leftPointerIndex++;
+    } else {
+      rightPointerIndex--;
+    }
+  }
 
-      if leftHeight < rightHeight:
-        leftPointerIndex += 1
-      else:
-        rightPointerIndex -= 1
-    
-    return area
+  return area;
+}
