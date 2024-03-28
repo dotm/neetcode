@@ -1,12 +1,8 @@
 /*
 206. Reverse Linked List
 Easy
-20.2K
-372
-Companies
-Given the head of a singly linked list, reverse the list, and return the reversed list.
 
- 
+Given the head of a singly linked list, reverse the list, and return the reversed list.
 
 Example 1:
 
@@ -46,7 +42,7 @@ class ListNode {
 
 function reverseList(head: ListNode | null): ListNode | null {
   if(head === null) {
-      return null
+    return null
   }
 
   let prev: ListNode | null = null

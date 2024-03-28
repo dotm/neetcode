@@ -37,12 +37,12 @@ The input must be a binary string of length 32.
 Follow up: If this function is called many times, how would you optimize it?
 */
 function hammingWeight(n: number): number {
-    let countOfOneBits = 0
-    while(n>0){
-        if(n%2 === 1){
-            countOfOneBits++
-        }
-        n >>>= 1
+  let countOfOneBits = 0
+  while(n>0){
+    if(n%2 === 1){
+      countOfOneBits++
     }
-    return countOfOneBits
+    n >>>= 1
+  }
+  return countOfOneBits
 };

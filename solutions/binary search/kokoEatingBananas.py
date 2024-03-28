@@ -42,6 +42,7 @@ class Solution:
     endingK = max(piles)
     res = -1 #not found value
 
+    #binary search to find min k possible
     while startingK <= endingK:
       k = (startingK + endingK) // 2
       if k == 0:

@@ -1,9 +1,7 @@
 """
 981. Time Based Key-Value Store
 Medium
-4.5K
-482
-Companies
+
 Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
 
 Implement the TimeMap class:

@@ -49,7 +49,7 @@ interface WrappedTreeNodeMetadata {
 }
 interface WrappedTreeNodeParams {
   nodeIndex: number,
-  #parentIndex: number | null,
+  parentIndex: number | null,
   leftIndex: number | null,
   rightIndex: number | null,
   node: TreeNode,
@@ -57,7 +57,7 @@ interface WrappedTreeNodeParams {
 }
 class WrappedTreeNode {
   nodeIndex: number
-  #parentIndex: number | null
+  parentIndex: number | null
   leftIndex: number | null
   rightIndex: number | null
   node: TreeNode
@@ -65,7 +65,7 @@ class WrappedTreeNode {
   metadata: WrappedTreeNodeMetadata
   constructor(obj: WrappedTreeNodeParams) {
     this.nodeIndex = obj.nodeIndex
-    this.#parentIndex = obj.#parentIndex
+    this.parentIndex = obj.parentIndex
     this.leftIndex = obj.leftIndex
     this.rightIndex = obj.rightIndex
     this.node = obj.node
@@ -83,8 +83,8 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
   }
 
   let diameter = 0
-  let queue: {node: TreeNode, #parentIndex: number | null, position: "left" | "right" | "root"}[] =
-    [{node: root, #parentIndex: null, position: "root"}]
+  let queue: {node: TreeNode, parentIndex: number | null, position: "left" | "right" | "root"}[] =
+    [{node: root, parentIndex: null, position: "root"}]
   let stackWithMetadata: WrappedTreeNode[] = []
   while(queue.length > 0) {
     let nodeAtCurrentDepth = queue.length
@@ -93,25 +93,25 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
       if(element === undefined){continue} //pacify typescript
       const wrappedNode = new WrappedTreeNode({
         nodeIndex: stackWithMetadata.length,
-        #parentIndex: element.#parentIndex,
+        parentIndex: element.parentIndex,
         leftIndex: null,
         rightIndex: null,
         node: element.node,
         metadata: undefined
       })
       stackWithMetadata.push(wrappedNode)
-      if(element.#parentIndex !== null){
+      if(element.parentIndex !== null){
         if(element.position === "left"){
-          stackWithMetadata[element.#parentIndex].leftIndex = wrappedNode.nodeIndex
+          stackWithMetadata[element.parentIndex].leftIndex = wrappedNode.nodeIndex
         }else if(element.position === "right"){
-          stackWithMetadata[element.#parentIndex].rightIndex = wrappedNode.nodeIndex
+          stackWithMetadata[element.parentIndex].rightIndex = wrappedNode.nodeIndex
         }
       }
       if(element.node.left !== null){
-        queue.push({node: element.node.left, #parentIndex: wrappedNode.nodeIndex, position: "left"})
+        queue.push({node: element.node.left, parentIndex: wrappedNode.nodeIndex, position: "left"})
       }
       if(element.node.right !== null){
-        queue.push({node: element.node.right, #parentIndex: wrappedNode.nodeIndex, position: "right"})
+        queue.push({node: element.node.right, parentIndex: wrappedNode.nodeIndex, position: "right"})
       }
     }
   }
@@ -125,12 +125,12 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
     let rightDiameter = 0
     const leftIndex = stackWithMetadata[i].leftIndex
     if(leftIndex !== null){
-      //assumed to be filled already because we are going from the top of the stack (the childrens to #parents)
+      //assumed to be filled already because we are going from the top of the stack (the childrens to parents)
       leftDiameter = stackWithMetadata[leftIndex].metadata.diameterIfIsNotRootOfDiameter ?? 0
     }
     const rightIndex = stackWithMetadata[i].rightIndex
     if(rightIndex !== null){
-      //assumed to be filled already because we are going from the top of the stack (the childrens to #parents)
+      //assumed to be filled already because we are going from the top of the stack (the childrens to parents)
       rightDiameter = stackWithMetadata[rightIndex].metadata.diameterIfIsNotRootOfDiameter ?? 0
     }
     stackWithMetadata[i].metadata.diameterIfIsRootOfDiameter = leftDiameter + rightDiameter

@@ -1,9 +1,7 @@
 /*
 143. Reorder List
 Medium
-9.9K
-333
-Companies
+
 You are given the head of a singly linked-list. The list can be represented as:
 
 L0 → L1 → … → Ln - 1 → Ln
@@ -11,8 +9,6 @@ Reorder the list to be on the following form:
 
 L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 You may not modify the values in the list's nodes. Only nodes themselves may be changed.
-
- 
 
 Example 1:
 
@@ -50,6 +46,13 @@ function reorderList(head: ListNode | null): void {
   if(head.next === null){
     return
   }
+
+  /**
+   * Approach:
+   * - get a pointer to middle and end
+   * - reverse the second half from middle to end (keeping the pointer to the new end)
+   * - merge from both end (start and new end)
+   */
 
   //find mid-point of linked list using slow and fast pointer
   let slowPointer = head

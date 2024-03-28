@@ -63,6 +63,7 @@ class LRUCache:
     self.right.prev = self.left
 
   def get(self, key: int) -> int:
+    #move existing key to most recently used
     if key in self.cache:
       node = self.cache[key]
       self.removeFromLinkedList(node)
@@ -71,12 +72,15 @@ class LRUCache:
     return -1
 
   def put(self, key: int, value: int) -> None:
+    #move existing key to most recently used
     if key in self.cache:
       node = self.cache[key]
       self.removeFromLinkedList(node)
     self.cache[key] = Node(key, value)
     node = self.cache[key]
     self.putAsMostRecentlyUsed(node)
+
+    #trim the LRU cache to keep within capacity
     if len(self.cache) > self.capacity:
       leastRecentlyUsedNode = self.left.next
       self.removeFromLinkedList(leastRecentlyUsedNode)

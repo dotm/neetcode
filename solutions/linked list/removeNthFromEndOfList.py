@@ -1,9 +1,7 @@
 """
 19. Remove Nth Node From End of List
 Medium
-17.6K
-737
-Companies
+
 Given the head of a linked list, remove the nth node from the end of the list and return its head.
 
  
@@ -49,16 +47,17 @@ class Solution:
     leftPointer = dummy
     #init rightPointer
     rightPointer = head
+    #move rightPointer to n-th after start
     for i in range(n):
       if rightPointer == None:
         return None
       rightPointer = rightPointer.next
 
-    #use rightPointer to move leftPointer to position
+    #use rightPointer to move leftPointer to position (n-th before end)
     while rightPointer != None:
       leftPointer = leftPointer.next
       rightPointer = rightPointer.next
 
-    leftPointer.next = leftPointer.next.next
+    leftPointer.next = leftPointer.next.next #remove n-th before end
 
     return dummy.next

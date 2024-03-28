@@ -40,13 +40,13 @@ It is very easy to come up with a solution with a runtime of O(n log n). Can you
 Can you do it without using any built-in function (i.e., like __builtin_popcount in C++)?
 */
 function countBits(n: number): number[] {
-    let bitCountList = [0]
-    let offset = 1
-    for(let i=1;i<=n;i++){
-        if(i === offset * 2){
-            offset = i
-        }
-        bitCountList[i] = 1+bitCountList[i-offset] //use dynamic programming (previously computed results)
+  let bitCountList = [0]
+  let offset = 1
+  for(let i=1;i<=n;i++){
+    if(i === offset * 2){
+      offset = i
     }
-    return bitCountList
+    bitCountList[i] = 1+bitCountList[i-offset] //use dynamic programming (previously computed results)
+  }
+  return bitCountList
 };

@@ -105,6 +105,7 @@ function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode
       comparedNode1 = nextNode1
     }
   }
+  //stick the rest of the other linked list if one linked list is empty
   if(comparedNode1 === null){
     newListTail.next = comparedNode2
   }else if(comparedNode2 === null){

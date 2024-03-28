@@ -1,9 +1,7 @@
 """
 4. Median of Two Sorted Arrays
-Solved
 Hard
-Topics
-Companies
+
 Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
 
 The overall run time complexity should be O(log (m+n)).
@@ -44,6 +42,9 @@ class Solution:
       #make smallerNums of smaller length than largerNums
       smallerNums, largerNums = largerNums, smallerNums
 
+    #approach split both nums using index into two partitions for each nums
+    #the left part of both nums shouldn't be larger that the right part
+    #the left partition of both nums should have almost the same size as the right partition of both nums (median)
     leftPointer, rightPointer = 0, len(smallerNums) - 1
     while True:
       #binary search on the smaller nums
