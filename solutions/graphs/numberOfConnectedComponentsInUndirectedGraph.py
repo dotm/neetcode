@@ -2,8 +2,6 @@
 3651 · Number of Connected Components in an Undirected Graph
 Algorithms
 Medium
-Accepted Rate
-51%
 
 Description
 In this problem, there is an undirected graph with n nodes. There is also an edges array. Where edges[i] = [a, b] means that there is an edge between node a and node b in the graph.

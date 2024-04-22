@@ -67,6 +67,7 @@ class MaxHeap<T> {
   #heapifyUp() {
     let index = this.heap.length - 1;
     while (this.#hasParent(index) && this.#parent(index).priority < this.heap[index].priority) {
+      //swap with parent if parent < node
       this.#swap(this.#getParentIndex(index), index);
       index = this.#getParentIndex(index);
     }

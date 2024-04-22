@@ -40,7 +40,9 @@ import heapq
 class Solution:
   def minCostConnectPoints(self, points: List[List[int]]) -> int:
     pointsCount = len(points)
-    adjacencyList = {i: [] for i in range(pointsCount)} #{pointIndex: (cost, anotherPointIndex)[]}
+
+    #create adjacencyList
+    adjacencyList = {i: [] for i in range(pointsCount)} #{pointIndex: (costToAnotherPointIndex, anotherPointIndex)[]}
     for i in range(pointsCount):
       x1, y1 = points[i]
       for j in range(i+1, pointsCount):
@@ -51,10 +53,11 @@ class Solution:
     
     #Prim's algorithm:
     # what's the shortest path to an unvisited node from all the nodes we've visited.
+    #Using Adjacency List, BFS, and Min Heap.
     result = 0
     visited = set()
     minHeap = [(0,0)] #(cost, pointIndex)[]. init to (0,0) because the cost of point of index 0 to itself is 0
-    while len(visited) < pointsCount:
+    while len(visited) < pointsCount: #minimum spanning tree hasn't been completed
       cost, pointIndex = heapq.heappop(minHeap)
       if pointIndex in visited:
         continue
