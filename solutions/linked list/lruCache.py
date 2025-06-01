@@ -1,9 +1,7 @@
 """
 146. LRU Cache
 Medium
-19.7K
-908
-Companies
+
 Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
 Implement the LRUCache class:
@@ -90,9 +88,12 @@ class LRUCache:
     node.prev.next, node.next.prev = node.next, node.prev
   
   def putAsMostRecentlyUsed(self, node):
+    #set pointer of current node
     node.prev = self.right.prev
     node.next = self.right
+    #set pointer of previous most recently used node (that's being replaced by current node)
     self.right.prev.next = node
+    #set pointer of sentinel node
     self.right.prev = node
 
 

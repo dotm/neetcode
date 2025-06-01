@@ -15,3 +15,5 @@ Based on https://neetcode.io/roadmap
 - For Python3: `python .\src\index.py`
 - For TypeScript: `npm run start`
 - For Golang: `go run .\src\index.go`
+
+![neetcoderoadmap](neetcode-roadmap.png)

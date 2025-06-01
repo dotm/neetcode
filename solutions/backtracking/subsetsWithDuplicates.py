@@ -1,9 +1,7 @@
 """
 90. Subsets II
 Medium
-9.2K
-265
-Companies
+
 Given an integer array nums that may contain duplicates, return all possible 
 subsets
  (the power set).
